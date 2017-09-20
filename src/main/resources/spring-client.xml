@@ -10,6 +10,13 @@
 
     <context:component-scan base-package="ws"/>
 
+    <jaxws:client id="transferZBaseCaseService" serviceClass="ciecc.swzf.zbasecase.service.impl.AdditionalRecodingCaseService"
+                  address="http://192.168.1.116:8080/ws/additionalRecodingCase?wsdl">
+        <jaxws:outInterceptors>
+            <ref bean="wss4jOutInterceptor"/>
+        </jaxws:outInterceptors>
+    </jaxws:client>
+
     <!--客户端发送请求拦截器-->
     <bean id="wss4jOutInterceptor" class="org.apache.cxf.ws.security.wss4j.WSS4JOutInterceptor">
         <constructor-arg>
@@ -25,26 +32,16 @@
     </bean>
 
     <!--客户端接收请求拦截器-->
-    <bean id="wss4jInInterceptor" class="org.apache.cxf.ws.security.wss4j.WSS4JInInterceptor">
-        <constructor-arg>
-            <map>
-                <!--验签（使用对方的公钥）-->
-                <entry key="action" value="Signature Encrypt"/>
-                <entry key="passwordCallbackRef" value-ref="recipientPasswordCallback"/>
-                <entry key="signatureVerificationPropFile" value="server.properties"/>
-                <entry key="decryptionPropFile" value="server.properties"/>
-            </map>
-        </constructor-arg>
-    </bean>
-
-    <jaxws:client id="helloService" serviceClass="demo.ws.soap_spring_cxf.HelloService"
-                  address="http://localhost:8080/ws/soap/hello?wsdl">
-        <jaxws:outInterceptors>
-            <ref bean="wss4jOutInterceptor"/>
-        </jaxws:outInterceptors>
-        <jaxws:inInterceptors>
-            <ref bean="wss4jInInterceptor"/>
-        </jaxws:inInterceptors>
-    </jaxws:client>
+    <!--<bean id="wss4jInInterceptor" class="org.apache.cxf.ws.security.wss4j.WSS4JInInterceptor">-->
+        <!--<constructor-arg>-->
+            <!--<map>-->
+                <!--&lt;!&ndash;验签（使用对方的公钥）&ndash;&gt;-->
+                <!--<entry key="action" value="Signature Encrypt"/>-->
+                <!--<entry key="passwordCallbackRef" value-ref="recipientPasswordCallback"/>-->
+                <!--<entry key="signatureVerificationPropFile" value="server.properties"/>-->
+                <!--<entry key="decryptionPropFile" value="server.properties"/>-->
+            <!--</map>-->
+        <!--</constructor-arg>-->
+    <!--</bean>-->
 
 </beans>

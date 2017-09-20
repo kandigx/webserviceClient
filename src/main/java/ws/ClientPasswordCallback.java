@@ -17,6 +17,6 @@ public class ClientPasswordCallback implements CallbackHandler {
 
     public void handle(Callback[] callbacks) throws IOException, UnsupportedCallbackException {
         WSPasswordCallback callback = (WSPasswordCallback) callbacks[0];
-        callback.setPassword("cieccPassword"); //key 的密码
+        callback.setPassword("Hfzx7bx5B7GqQALUnRao3B612QNq0pAP"); //key 的密码
     }
 }

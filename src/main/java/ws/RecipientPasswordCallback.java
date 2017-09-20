@@ -18,7 +18,7 @@ public class RecipientPasswordCallback implements CallbackHandler {
     public void handle(Callback[] callbacks) throws IOException, UnsupportedCallbackException {
 
         WSPasswordCallback callback = (WSPasswordCallback) callbacks[0];
-        callback.setPassword("cieccPassword");
+        callback.setPassword("Hfzx7bx5B7GqQALUnRao3B612QNq0pAP");
 
     }
 }
